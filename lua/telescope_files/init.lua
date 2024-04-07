@@ -15,15 +15,15 @@ local files = function(opts)
                 prompt_title = "Files",
                 finder = finders.new_table {
                   results = entries,
+                  entry_maker = function(entry)
+                    return {
+                      value = entry[1],
+                      display = entry[1],
+                      ordinal = entry[1],
+                      path = entry[2],
+                    }
+                  end,
                 },
-                entry_maker = function(entry)
-                  return {
-                    value = entry[1],
-                    display = entry[1],
-                    ordinal = entry[1],
-                    path = entry[2],
-                  }
-                end,
                 sorter = conf.generic_sorter(opts),
                 attach_mappings = function(prompt_bufnr)
                   actions.select_default:replace(function()
