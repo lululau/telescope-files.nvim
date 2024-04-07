@@ -13,7 +13,7 @@ local files = function(opts)
   end, files_list)
   pickers.new(opts, {
                 prompt_title = "Files",
-                finder = finders.bew_table {
+                finder = finders.new_table {
                   results = entries,
                 },
                 entry_maker = function(entry)
