@@ -6,10 +6,10 @@ local conf = require "telescope.config".values
 
 local files = function(opts)
   opts = opts or {}
-  local files_list = vim.fn.systemlist("ls -a '" .. vim.fn.bufname() .. "'")
+  local files_list = vim.fn.systemlist("ls -A '" .. vim.fn.bufname() .. "'")
   local entries = vim.tbl_map(function(x)
       local abs_path = vim.fn.fnamemodify(vim.fn.bufname(), ":p:h") .. "/" .. x
-    return { x, abs_path }
+      return { x, abs_path }
   end, files_list)
   pickers.new(opts, {
                 prompt_title = "Files",
